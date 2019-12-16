@@ -105,13 +105,11 @@ const colors = {
            height: 250px;
            border-radius: 50%;
            object-fit: cover;
-           margin-top: -75px;
            border: 6px solid ${colors[data.color].photoBorderColor};
            box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
            }
            .photo-header h1, .photo-header h2 {
            width: 100%;
-           text-align: center;
            }
            .photo-header h1 {
            margin-top: 10px;
@@ -156,13 +154,22 @@ const colors = {
            
            .col {
            flex: 1;
-           text-align: center;
            }
-  
+
+           .align {
+             text-align: center;
+           }
+           .margint {
+             margin-top: 125px;
+           }
            a, a:hover {
            text-decoration: none;
            color: inherit;
            font-weight: bold;
+           }
+
+           ul li{
+             margin: 4px;
            }
   
            @media print { 
@@ -173,9 +180,25 @@ const colors = {
         </style>
       </head>
       <body>
-           <h1>${res.name}</h1>
-           <p>${data.userName}</p>
-           <p>${res.repos_url}</p>
+          <div class='container wrapper'>
+            <div class='row photo-header'>
+              <div class='col align'>
+                <h1>${res.name}</h1>
+                <img src='${res.avatar_url}' alt='profile pic'>
+                <p>${res.login}</p>
+                <p>${res.bio}</p>
+              </div>
+              <div class='col margint'>
+              <ul>
+                <li>Click <a href='${res.html_url}'target='_blank'>HERE</a> to view ${res.name}'s Repos</li>
+                <li>Public Repos: ${res.public_repos} </li>
+                <li>Followers: ${res.followers}</li>
+                <li>Following: ${res.following}</li>
+                <li>Location: ${res.location}</li>
+
+              </div>
+            </div>
+          </div>
            
       </body>`
           }

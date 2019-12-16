@@ -9,11 +9,7 @@ const writeFileAsync = util.promisify(fs.writeFile);
 
 function promptUsers() {
 return inquirer.prompt([
-    {
-        type: "input",
-        name: "userName",
-        message:"What is your GitHub username?"
-    },
+
     {
         type:"list",
         name: "color",
