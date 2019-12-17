@@ -38,8 +38,7 @@ async function getGitHub() {
       const { data } = await axios.get(
         `https://api.github.com/users/${userName}`
       );
-  
-      console.log(data);
+        
         return data;
     
     } catch (err) {
@@ -59,11 +58,11 @@ async function init() {
         console.log("Successfully wrote to index.html");
 
         var doc = fs.readFileSync('index.html', 'utf8');
-        var options = { format: 'Letter' };
+        var options = { format: 'Letter', orientation: "portrait" };
 
         pdf.create(doc, options).toFile('profile_generator.pdf', function(err, res) {
           if (err) return console.log(err);
-          console.log(res); // { filename: '/app/businesscard.pdf' }
+          console.log("Created pdf file"); 
         });
     } 
     catch(err) {

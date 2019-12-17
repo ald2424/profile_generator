@@ -162,6 +162,7 @@ const colors = {
            .margint {
              margin-top: 125px;
            }
+
            a, a:hover {
            text-decoration: none;
            color: inherit;
@@ -195,7 +196,7 @@ const colors = {
                 <li>Followers: ${res.followers}</li>
                 <li>Following: ${res.following}</li>
                 <li>Location: ${res.location}</li>
-
+                <li>Click<a href='https://www.google.com/maps/place/${res.location}'> HERE </a>to view location</li>
               </div>
             </div>
           </div>
