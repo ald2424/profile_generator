@@ -2,6 +2,9 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
 const axios = require("axios");
+var pdf = require('html-pdf');
+
+
 
 let generateHTML = require("./generateHTML.js")
 
@@ -44,9 +47,6 @@ async function getGitHub() {
     }
   }
 
-function writeToFile(fileName, data, data2) {
- 
-}
 
 async function init() {
     try{
@@ -57,6 +57,14 @@ async function init() {
 
         await writeFileAsync("index.html", html);
         console.log("Successfully wrote to index.html");
+
+        var doc = fs.readFileSync('index.html', 'utf8');
+        var options = { format: 'Letter' };
+
+        pdf.create(doc, options).toFile('profile_generator.pdf', function(err, res) {
+          if (err) return console.log(err);
+          console.log(res); // { filename: '/app/businesscard.pdf' }
+        });
     } 
     catch(err) {
       console.log(err);
